@@ -135,5 +135,31 @@ python -m app.main \
   --pretty-print
 ````
 Replace `1038` with the subject ID you want to evaluate.
-
-
+The final assessment-support report is saved to:
+```ruby
+outputs/<subject_id>_assessment_report.json
+```
+The JSON output contains:
+```
+{
+  "subject_id": "1038",
+  "specialist_reports": [],
+  "board_draft_report": {},
+  "critic_report": {},
+  "board_final_report": {},
+  "board_report": {},
+  "final_assessment": {}
+}
+```
+A successful run should show LLM calls for the Board Agent, Critic Agent, and Board Final Agent:
+```
+[Board LLM] Calling model: ...
+[Board LLM] Response received.
+[Board] Using LLM-generated board report.
+[Critic LLM] Calling model: ...
+[Critic LLM] Response received.
+[Critic] Using LLM-generated critic report.
+[Board Final LLM] Calling model: ...
+[Board Final LLM] Response received.
+[Board Final] Using LLM-generated final board report.
+```
