@@ -50,5 +50,25 @@ macdys/
 └── README.md
 ```
 
+# Dataset
+This project uses **ETDD70: Eye-Tracking Dyslexia Dataset**, an eye-tracking dataset designed for AI-based dyslexia classification. The dataset contains eye-movement recordings from **70 Czech children aged 9–10**, including **35 dyslexic readers** and **35 non-dyslexic readers**. Participants performed three Czech reading tasks: syllable reading, meaningful-text reading, and pseudo-text reading. The dataset provides raw eye-tracking signals, fixation data, saccade data, derived statistical metrics, region-of-interest annotations, task stimuli, class labels, and fixation-image representations. These data are used to analyze reading behavior and build models for distinguishing dyslexic and non-dyslexic readers based on eye-movement patterns.
+
+After downloading the dataset from Zenodo, organize the files as follows:
+
+```
+data/
+├── fixation/                  # Processed fixation files: *_fixations.csv
+├── saccade/                   # Processed saccade files: *_saccades.csv
+├── metric/                    # Derived metric files: *_metrics.csv
+├── raw/                       # Raw eye-tracking files: *_raw.csv
+├── rois/                      # ROI annotation files from rois.zip
+├── task_stimuli/              # Stimulus images/files from stimuli.zip
+├── dyslexia_class_label.csv   # Participant-level dyslexia labels
+└── fixation_images/           # Visual fixation representations from fixation_images.zip
+```
+
+
+
+
 
 
