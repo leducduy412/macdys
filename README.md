@@ -16,4 +16,39 @@ Each task is handled by a **task-specialist agent**. These specialists generate 
 evidence. A **Board Agent** then synthesizes all specialist outputs into a final assessment-support report.
 A **Critic Agent** reviews the Board Draft and points out issues before the Board produces the final report.
 
-![Overview of the method](https://drive.google.com/file/d/1cnrRnfmdzazL1xXUT8C7S60CX8QPUZGk/view?usp=sharing)
+![Overview of the method](https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdrive.google.com/uc?id=1cnrRnfmdzazL1xXUT8C7S60CX8QPUZGk)
+
+## Repository Structure
+The MacDys is built to be modular. A typical project structure is:
+
+```
+macdys/
+├── app/
+│   ├── agents/
+│   │   ├── specialist.py
+│   │   ├── board.py
+│   │   └── critic.py
+│   ├── graph/
+│   │   └── workflow.py
+│   ├── config.py
+│   ├── explainability.py
+│   ├── inference.py
+│   ├── main.py
+│   ├── schemas.py
+│   ├── state.py
+│   └── utils/
+│       └── utils.py
+│
+├── scripts/
+│   ├── evaluate_models.py
+│   └── prepare_features_with_aoi.py
+│   └── train_models.py
+│   └── split_dataset.py
+│
+├── requirements.txt
+|
+├── README.md
+```
+
+
+
