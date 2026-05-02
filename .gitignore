@@ -1,0 +1,8 @@
+*.docx
+models/final/
+models/final_old/
+__pycache__/
+.DS_Store
+data/
+outputs/
+models/final/
