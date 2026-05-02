@@ -93,7 +93,47 @@ data/processed/aoi_profiles.json
 ```ruby
 python scripts/train_models.py --csv data/processed_v2/features_aoi.csv
 ```
-
-
+After training, the expected model files are:
+```
+models/final/syllables_rf.joblib     → Syllables task
+models/final/meaningful_rf.joblib    → MeaningfulText task
+models/final/pseudotext_rf.joblib    → PseudoText task
+```
+**4.Configure the LLM**
+The Board Agent and Critic Agent use an OpenAI-compatible LLM endpoint.
+Edit `app/config.py`:
+```ruby
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "YOUR_KEY_HERE")
+OPENAI_BASE_URL = os.getenv("OPENAI_BASE_URL", "YOUR_API_URL_HERE")
+OPENAI_MODEL = os.getenv("LLM_MODEL", "YOUR_MODEL_HERE")
+```
+Example:
+```ruby
+LLM_MODEL = "nvidia/nemotron-3-nano-30b-a3b:free"
+LLM_API_KEY = "your_api_key_here"
+LLM_BASE_URL = "https://openrouter.ai/api/v1"
+```
+For the main pipeline, LLM fallback should be disabled:
+```ruby
+unset MACDYS_ALLOW_LLM_FALLBACK
+```
+For debugging only, you may enable fallback mode:
+```ruby
+export MACDYS_ALLOW_LLM_FALLBACK=1
+```
+**5. Run full multi-agent inference**
+Run the complete MacDys workflow for one subject:
+```ruby
+python -m app.main \
+  --case-csv data/processed/features_aoi.csv \
+  --subject-id 1038 \
+  --mode holdout \
+  --aoi-profile-json data/processed/aoi_profiles.json \
+  --syllables-model-path models/final/syllables_rf.joblib \
+  --meaningful-model-path models/final/meaningful_rf.joblib \
+  --pseudotext-model-path models/final/pseudotext_rf.joblib \
+  --pretty-print
+````
+Replace `1038` with the subject ID you want to evaluate.
 
 
