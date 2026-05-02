@@ -46,8 +46,8 @@ macdys/
 │   └── split_dataset.py
 │
 ├── requirements.txt
-|
-├── README.md
+│
+└── README.md
 ```
 
 
