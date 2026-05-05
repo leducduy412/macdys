@@ -69,6 +69,7 @@ data/
 
 ## Quickstart
 This section describes how to run the complete MacDys pipeline, from raw eye-tracking data preparation to the final multi-agent assessment-support report.
+
 **1. Install dependencies**
 ```ruby
 pip install -r requirements.txt
